@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Lapor Bu Dekan',
+      theme: ThemeData(fontFamily: 'Roboto'),
+      home: const WelcomePage(),
+    );
+  }
+}
+
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF304A80),
+
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 350,
+                height: 350,
+                decoration: const BoxDecoration(shape: BoxShape.circle),
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/images/foto_profil.jpg',
+                    width: 350,
+                    height: 350,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 38),
+
+              const Text(
+                'Lapor Bu Dekan!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  height: 1.5,
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Selamat datang di Lapor Bu Dekan!'),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF52688F),
+                    elevation: 0,
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                  ),
+                  child: const Text(
+                    'Ayo Mulai',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
